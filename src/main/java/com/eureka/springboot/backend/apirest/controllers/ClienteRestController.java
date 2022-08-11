@@ -1,11 +1,9 @@
-package com.eureka.springboot.backend.apirest.controlers;
+package com.eureka.springboot.backend.apirest.controllers;
 
 import com.eureka.springboot.backend.apirest.models.entity.Cliente;
 import com.eureka.springboot.backend.apirest.models.entity.Region;
 import com.eureka.springboot.backend.apirest.models.services.IClienteService;
 import com.eureka.springboot.backend.apirest.models.services.IUploadFileService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.dao.DataAccessException;
@@ -44,6 +42,11 @@ public class ClienteRestController {
     @GetMapping("/clientes/page/{page}")
     public Page<Cliente> index(@PathVariable Integer page){
         return clienteService.findAll(PageRequest.of(page,4));
+    }
+
+    @GetMapping("/gamers/{page}/{size}")
+    public Page<Cliente> index(@PathVariable Integer page, @PathVariable Integer size){
+        return clienteService.findAll(PageRequest.of(page,size));
     }
 
     @Secured({"ROLE_USER","ROLE_ADMIN"})

@@ -45,6 +45,11 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 .authorizedGrantTypes("password","refresh_token")
                 .accessTokenValiditySeconds(3600)
                 .refreshTokenValiditySeconds(3600);
+        clients.inMemory().withClient("materialapp").secret(passwordEncoder.encode("12345"))
+                .scopes("read","write")
+                .authorizedGrantTypes("password","refresh_token")
+                .accessTokenValiditySeconds(3600)
+                .refreshTokenValiditySeconds(3600);
     }
 
     @Override

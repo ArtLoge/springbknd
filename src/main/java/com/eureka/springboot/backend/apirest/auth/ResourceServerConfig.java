@@ -14,6 +14,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
 import java.util.Arrays;
+import java.util.List;
 
 @Configuration
 @EnableResourceServer
@@ -32,7 +33,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
     @Bean
     public CorsConfigurationSource corsConfigurationSource(){
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
+        config.setAllowedOrigins(List.of("http://localhost:4200"));
         config.setAllowedMethods(Arrays.asList("GET","POST","PUT","DELETE","OPTIONS"));
         config.setAllowCredentials(true);
         config.setAllowedHeaders(Arrays.asList("Content-Type","Authorization"));
